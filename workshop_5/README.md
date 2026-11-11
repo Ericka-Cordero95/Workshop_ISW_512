@@ -4,7 +4,7 @@ Aplicación web para crear, listar, editar y eliminar productos. Cada producto t
 
 ## Instalación en Windows
 
-Abre la carpeta `crud_mvc` en Visual Studio Code y selecciona **Terminal → Nueva terminal**. Usa PowerShell y verifica que la ruta de la terminal termine en `crud_mvc`.
+Abre la carpeta `workshop_5` en Visual Studio Code y selecciona **Terminal → Nueva terminal**. Usa PowerShell y verifica que la ruta de la terminal termine en `workshop_5`.
 
 Comprueba que Python esté instalado.
 

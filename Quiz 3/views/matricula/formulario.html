@@ -1,0 +1,27 @@
+{% extends "layout/base.html" %}
+{% block titulo %}Matrícula de estudiantes{% endblock %}
+{% block contenido %}
+{% if cursos %}
+<form method="post" class="panel">
+  <label>Identificación
+    <input name="identificacion" maxlength="30" required value="{{ datos.get('identificacion', '') }}">
+  </label>
+  <label>Nombre completo
+    <input name="estudiante" maxlength="120" required value="{{ datos.get('estudiante', '') }}">
+  </label>
+  <label>Curso
+    <select name="curso_id" required>
+      <option value="">Selecciona un curso</option>
+      {% for c in cursos %}
+      <option value="{{ c.id }}" {% if datos.get('curso_id') == c.id|string %}selected{% endif %}>
+        {{ c.codigo }} · {{ c.nombre }} · {{ c.creditos }} créditos · {{ c.carrera }}
+      </option>
+      {% endfor %}
+    </select>
+  </label>
+  <button>Matricular</button>
+</form>
+{% else %}
+<p>El listado de cursos está vacío. <a href="{{ url_for('cursos.formulario') }}">Crear el primer curso</a></p>
+{% endif %}
+{% endblock %}

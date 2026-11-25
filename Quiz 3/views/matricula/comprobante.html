@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+{% block titulo %}Comprobante de matrícula{% endblock %}
+{% block contenido %}
+<dl class="panel">
+  {% for etiqueta, valor in [('Número de matrícula', m.id), ('Nombre completo', m.estudiante),
+     ('Identificación', m.identificacion), ('Curso', m.curso), ('Código', m.codigo),
+     ('Créditos', m.creditos), ('Carrera', m.carrera), ('Fecha y hora (UTC)', m.fecha)] %}
+    <dt>{{ etiqueta }}</dt><dd>{{ valor }}</dd>
+  {% endfor %}
+</dl>
+<a href="{{ url_for('matricula.inicio') }}">Registrar otra matrícula</a>
+{% endblock %}

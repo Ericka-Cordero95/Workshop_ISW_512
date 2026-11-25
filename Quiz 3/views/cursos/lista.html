@@ -1,0 +1,23 @@
+{% extends "layout/base.html" %}
+{% block titulo %}Cursos{% endblock %}
+{% block contenido %}
+<p><a href="{{ url_for('cursos.formulario') }}">Agregar curso</a></p>
+{% if cursos %}
+<div class="tabla"><table>
+  <thead><tr><th>Código</th><th>Nombre</th><th>Créditos</th><th>Carrera</th><th>Acciones</th></tr></thead>
+  <tbody>
+  {% for c in cursos %}
+    <tr>
+      <td>{{ c.codigo }}</td><td>{{ c.nombre }}</td><td>{{ c.creditos }}</td><td>{{ c.carrera }}</td>
+      <td><a href="{{ url_for('cursos.formulario', curso_id=c.id) }}">Editar</a>
+        <form method="post" action="{{ url_for('cursos.eliminar', curso_id=c.id) }}"
+              onsubmit="return confirm('¿Eliminar este curso del listado?')">
+          <button class="eliminar">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% else %}<p>Todavía no hay cursos registrados.</p>{% endif %}
+{% endblock %}

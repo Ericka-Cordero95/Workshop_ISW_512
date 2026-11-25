@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}{% endblock %} · Quiz 3</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  <header><nav aria-label="Principal">
+    <strong>Registro académico</strong>
+    <a href="{{ url_for('matricula.inicio') }}">Matrícula</a>
+    <a href="{{ url_for('cursos.lista') }}">Cursos</a>
+  </nav></header>
+  <main>
+    <h1>{{ self.titulo() }}</h1>
+    {% if error %}<p role="alert">{{ error }}</p>{% endif %}
+    {% block contenido %}{% endblock %}
+  </main>
+</body>
+</html>
